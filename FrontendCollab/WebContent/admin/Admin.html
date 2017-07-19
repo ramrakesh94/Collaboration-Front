@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<p> Welcome {{currentUser.name}} You Are Here An {{currentUser.role}} </p>
+<div class="column-content-region col-sm-6" style="margin-left: 4em;" ng-controller="BlogController as bcc" >
+
+<h3>Blogs</h3>
+<div ng-init="bcc.notAcceptedBlogs()">
+<!-- {{bcc.blogsNotAccepted}} -->    <!-- why we use filter if we have function -->
+<div class="abc" ng-repeat="bna in bcc.blogsNotAccepted | filter:searchText">
+<h1>TITLE:{{bna.blogtitle}} </h1>
+<h6>Authored By:{{bna.name}} </h6><h6>Created On:<!-- <span ng-bind="bna.timeStamp"></span> --> </h6> 
+<h6>STATUS:{{bna.status}} </h6>
+<h3>DESC:{{bna.blogDescription}}</h3>
+<br>
+<a href="" ng-click="bcc.adminGet(bna)"><input type="button" name="button" color="orange"  value="Read More"/></a>
+
+<hr>
+</div>
+</div>
+</div>
+
+</body>
+</html>

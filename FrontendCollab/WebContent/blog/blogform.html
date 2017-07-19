@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Aclonica" />
+<title>Insert title here</title>
+</head>
+
+<style>
+/* Form Styles */
+body {
+  background: #6495ED;
+  font-family: 'proxima-nova', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.container {
+  width: 600px;
+  margin: 10px auto;
+}
+.container header {
+  text-align: center;
+}
+.container header h2 {
+  color: #333;
+  font-size: 22px;
+  font-weight: 300;
+  line-height: 24px;
+  margin: 0 0 15px;
+  padding: 0;
+}
+.container header p {
+  color: #666;
+  margin: 0 0 35px;
+}
+.container footer {
+  width: 100%;
+  padding: 15px 40px;
+  margin: 0 0 -40px -40px;
+  color: #666;
+  font-size: 12px;
+  text-align: center;
+}
+.container footer a {
+  color: #333;
+  text-decoration: none;
+}
+.container footer .fa {
+  color: #e74c3c;
+}
+/* Magic Starts here */
+.form {
+  background: #f8f8f8;
+  border: 3px solid #e5e5e5;
+  border-radius: 40px;
+}
+.form:before,
+.form:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.form .field {
+  width: 60%;
+  width:590px;
+  padding: 5px 20px 5px;
+  border-bottom: 0px solid #e5e5e5;
+  box-sizing: border-box;
+  float: left;
+  transition: 0.3s linear;
+}
+.form .field:nth-child(2n) {
+  border-left: 0px solid #e5e5e5;
+}
+.form .field label {
+  color: #000000;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.form .field input {
+  outline: none;
+  background: none;
+  width: 60%;
+  border: 0;
+  padding: 5px 0;
+  color: #666;
+  font-family: 'proxima-nova';
+  font-size: 16px;
+  font-weight: 600;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: 0.3s linear;
+}
+
+.form button {
+  cursor: pointer;
+  display: block;
+  color:#000000;
+  background: #6495ED;
+  width: 180px;
+  margin: 0 auto;
+  margin-bottom: 42px;
+  padding: 26px 70px;
+  border: none;
+  border-radius: 100px;
+  
+  font-family: 'proxima-nova';
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: 0.2s linear;
+}
+.form button:hover {
+  background: #f07d63;
+}
+
+
+textarea#wow{
+    width: 540px;
+    height: 300px;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 9px;
+    background-color: #f8f8f8;
+    color:#000000;;
+    font-size: 16px;
+    resize: none;
+}
+.formfield * {
+  vertical-align: middle;
+}
+
+</style>
+<body>
+<div class='container'>
+  <header>
+    <h2><font face="Aclonica" size="8"> Be A Blogger </h2>  
+  </header>
+  <!-- / START Form -->
+  <div class='form'>
+  <form ng-submit="bc.submit()">
+    <form>
+      <div class='field'>
+        <label for='username'>Blog Title</label>
+        <input id='username' name='blogtitle' type='text' value='Machine Learning Todays Most Wanted tool' ng-model="bc.blog.blogtitle" >
+      </div>
+      <div class='field'>
+      <p class="formfield">
+        <label>Description</label>
+        <textarea id="wow" rows="12" name='blogDescription' ng-model="bc.blog.blogDescription" > HI</textarea>
+        </p>
+  
+    </div>
+      <button type ="submit" name ="submit">POST</button>
+    </form >
+  </div>
+  <!-- / END Form -->
+  
+</div>
+</body>
+</html>

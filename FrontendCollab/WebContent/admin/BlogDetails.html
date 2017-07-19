@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<div><h4 style= "margin: 0px 0px 10px 0px; margin-left: 85%;"><a href="#blog" ng-show="currentUser.name">Create New Blog</a></h4></div>
+<div><h1 style="margin-top: 2em;">{{viewBlogs.blogtitle}}</h1>
+<h5>Created by : <b>{{viewBlogs.name}}</b> | Created On : <!-- <b>{{viewBlogs.timeStamp}} --></b></h5>
+<h4>{{viewBlogs.blogDescription}}</h4></div>
+<button type="button" ng-click="bcc.accept(viewBlogs)" color="blue">Approve</button>    
+<button type="button" ng-click="bcc.rejectBlog(viewBlogs)">Reject</button>
+</body>
+</html>
