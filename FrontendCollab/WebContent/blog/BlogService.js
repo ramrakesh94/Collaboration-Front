@@ -68,7 +68,7 @@ app.service('BlogService', [
 
 			function updateBlog(Blog) {
 				console.log("calling fetchAllBlogs ")
-				return $http.put(BASE_URL + '/Blog/', Blog) // 2
+				return $http.put(BASE_URL + '/blogs', Blog) // 2
 				.then(function(response) {
 					return response.data;
 				}, function(errResponse) {

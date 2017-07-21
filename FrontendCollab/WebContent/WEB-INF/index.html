@@ -54,6 +54,7 @@
 <script type="text/javascript" src="user/UserService.js"></script>
 <script type="text/javascript" src="blog/BlogService.js"></script>
 <script type="text/javascript" src="job/JobService.js"></script>
+<script type="text/javascript" src="ApplyJob/ApplyJobService.js"></script>
 <script type="text/javascript" src="BlogComment/BlogCommentService.js"></script>
     <!--[if IE 7]>
     
@@ -98,7 +99,7 @@
                             <li class="menu-item-simple-parent"><a href="#viewjob" >Jobs</a>
                             	<ul class="sub-menu">
                                     <li><a href="#job" ng-show="currentUser.role=='ADMIN'">Add Job </a></li>
-                                   
+                                    <li><a href="#jobP" ng-show="currentUser.role=='STUDENT'">Job Profile </a></li>
                                 	
                                 </ul>
                                 <a class="dt-menu-expand">+</a>

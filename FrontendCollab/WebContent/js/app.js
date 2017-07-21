@@ -35,6 +35,7 @@ app.config(function($routeProvider) {
 	})
 	.when('/admin', {
 		templateUrl : 'admin/Admin.html'
+			
 
 	})
 	.when('/user', {
@@ -68,12 +69,17 @@ app.config(function($routeProvider) {
 			controllerAs : 'bc'
 
 	})
-
-
 	
 
 	.when('/job', {
 		templateUrl : 'job/jobform.html',
+		controller : 'JobController',
+		controllerAs : 'jc'
+
+	})
+	
+	.when('/jobP', {
+		templateUrl : 'user/profile.html',
 		controller : 'JobController',
 		controllerAs : 'jc'
 

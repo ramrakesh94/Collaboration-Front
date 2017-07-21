@@ -21,7 +21,7 @@ app.controller('BlogController', ['$scope','BlogService','BlogCommentService','$
 		    self.notAcceptedBlogs = notAcceptedBlogs;
 			self.accept = accept;
 			self.rejectBlog = rejectBlog;
-		    
+		    $scope.count=0;
 			fetchAllBlogs();
 			AcceptedBlogs();
 			//notAcceptedBlogs();
@@ -113,7 +113,7 @@ app.controller('BlogController', ['$scope','BlogService','BlogCommentService','$
 		            });
 		    };
 
-			function updateBlog(currentBlog){
+			function updateBlog(currentBlog){ // blogid!= null , div ng show 
 				console.log("updateBlog...")
 				BlogService.updateBlog(currentBlog).then(self.fetchAllBlogs,
 						null);
@@ -143,8 +143,8 @@ app.controller('BlogController', ['$scope','BlogService','BlogCommentService','$
 			// better to call fetchAllBlogs -> after login ???
 
 			function get(blog){
-				BlogCommentService.fetchAllBlogComments(blog.blogId) .then(function(d) {
-					self.blogComments = d;
+				BlogCommentService.fetchAllBlogComments(blog.blogId) .then(function(d) { // prev we passed id to fetch all blog comments
+					self.blogComments = d;                      //also note in app context u say autowired true create bean and do same in controller so bean may be created twice 
 					$rootScope.bcomment = d;
 					console.log($rootScope.bcomment);
 					console.log(self.blogComments);
@@ -174,8 +174,13 @@ app.controller('BlogController', ['$scope','BlogService','BlogCommentService','$
 			 function submit() {
 				
 					console.log('Saving New Blog', self.blog);
+					if(self.blog.id == null){
+						
 					createBlog(self.blog);
-				
+
+					}else{
+						
+					}
 				reset();
 			};
 

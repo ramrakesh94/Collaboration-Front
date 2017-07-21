@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body >
+
+<!-- <div ng-controller="JobController as jc"> -->
+<p>Jobs</p>
+<div ng-init="jc.BringAllMyJobs()">
+     <div ng-repeat="j in jc.appjobs"> 
+      
+ <h1> Job TITLE:{{j.jobname}} </h1>
+<h6>Authored By:{{j.userName}} </h6><h6>Created On: <!-- <span ng-bind="j.timeStamp"></span> </h6>  -->
+
+        </h6>
+        </div>
+        </div>
+        
+
+
+</body>
+</html>

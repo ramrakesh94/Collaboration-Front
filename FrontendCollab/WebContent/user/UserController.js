@@ -1,4 +1,5 @@
-app.controller('UserController',['$scope','UserService','$location','$rootScope','$cookies','$cookieStore','$http',function($scope, UserService, $location, $rootScope,$cookies,$cookieStore, $http) {
+app.controller('UserController',['$scope','UserService','$location','$rootScope','$cookies','$cookieStore','$http',
+						function($scope, UserService, $location, $rootScope,$cookies,$cookieStore, $http) {
 							console.log("UserController...") // i have deleted friend related check in service and line 1 and 2 
 							var i = 0;
 							var j = 0;
@@ -14,8 +15,8 @@ app.controller('UserController',['$scope','UserService','$location','$rootScope'
 								$scope.myOrderBy = x;
 							}  
 							
-							var currentLoginUser = $cookies.getObject('currentLoginUser');
-							console.log(currentLoginUser);
+							/*var currentLoginUser = $cookies.getObject('currentLoginUser');
+							console.log(currentLoginUser);*/
 							/*
 							self.threeInOne = function() {
 								self.fetchAllUsers();

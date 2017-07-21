@@ -4,7 +4,7 @@
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
-<body>
+<body ng-contoller="BlogController">
  <div id="main"><!-- Main -->
         	<div class="hr-invisible-small"></div>
         	<section class="fullwidth-background">
@@ -47,7 +47,7 @@
                                     <a href="#" title="Comment on Latin words Ipsum"> <span class="fa fa-clock-o"> </span>June 25th, 2015</a>
                                 </div>  -->
                                 <div class="comments">
-                                    <a href="#" title="Comment on Latin words Ipsum"> <span class="fa fa-comment"> </span># Comments</a>
+                                    <a href="#" title="Comment on Latin words Ipsum"> <span class="fa fa-comment"> </span>{{count}} Comments</a>
                                 </div> 
                                 <!-- <div class="likes">
                                     <a href="#" title="Comment on Latin words Ipsum"> <span class="fa fa-thumbs-o-up"> </span>120 Likes</a>
@@ -67,8 +67,21 @@
                             <div class="hr-separator type2"></div>
                             <div class="clear"></div>
                             <div class="hr-invisible-medium"></div>
-                            <div class="commententries">
-                            	<h3 class="border-title"> # <span>Comments</span></h3>
+                            <div id="respond">
+                            	<h3  class="border-title" ng-show="currentUser.role=='STUDENT'" > Post A <span>Comment</span></h3>
+                                <form method="post" id="comment-form" ng-submit="bc.createBlogComment(bc.blogcomment)"  ng-show="currentUser.role=='STUDENT'">
+                                	
+                                                <textarea cols="5" rows="10"  class="form-control" placeholder="Your Message" ng-model="bc.blogcomment.bcomments"></textarea>
+                                            </p>
+                                            <input type="submit" ng-click="count=count+1" name="submit" value="Add Comments"></input>
+                                       
+                                </form>
+                            </div>
+                            <div class="commententries"  ng-show="currentUser.role=='STUDENT'" ng-repeat="b in bct ">
+                            	<h3 class="border-title"><!--  # <span>Comments</span> --></h3>
+                            	    By:<span ng-bind="b.username"></span>
+                                 <div class="text">Comment:<span ng-bind="b.bcomments"></span></div>
+                                 <!-- <p>count</p> -->
                                 <ul class="commentlist">
                                 	<li>
                                        <!--  <div class="comment">
@@ -137,16 +150,10 @@
                                     </li>                                   
                                 </ul>
                             </div> -->
-                            <div id="respond">
-                            	<h3 class="border-title"> Post A <span>Comment</span></h3>
-                                <form method="post" id="comment-form" >
-                                	
-                                                <textarea cols="5" rows="10" required name="txtmessage" class="message" placeholder="Your Message"></textarea>
-                                            </p>
-                                            <input type="submit" name="submit" value="Add Comments">
-                                        
-                                </form>
+                            </li>
+                            </ul>
                             </div>
+                            
                             <div class="clear"></div>
                             <div class="hr-invisible-medium"></div>
                             <div class="share-post">

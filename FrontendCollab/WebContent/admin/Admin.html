@@ -18,11 +18,25 @@
 <h3>DESC:{{bna.blogDescription}}</h3>
 <br>
 <a href="" ng-click="bcc.adminGet(bna)"><input type="button" name="button" color="orange"  value="Read More"/></a>
+<p>--------------------------------------</p>
+</div>
+<div ng-controller="JobController as jc">
+<p>Jobs</p>
+<div ng-init="jc.BringAllAppJobs()">
+     <div ng-repeat="j in jc.appjobs"> 
+      
+ <h1> Job TITLE:{{j.jobname}} </h1>
+<h6>Authored By:{{j.userName}} </h6><h6>Created On: <!-- <span ng-bind="j.timeStamp"></span> </h6>  -->
 
+        </h6>
+        </div>
+        </div>
+        
+</div>
 <hr>
 </div>
 </div>
-</div>
+
 
 </body>
 </html>

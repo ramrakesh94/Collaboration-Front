@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+
+<div><h4 style= "margin: 0px 0px 10px 0px; margin-left: 85%;"><a href="#blog" ng-show="currentUser.name">Create New Blog</a></h4></div>
+<div><h1 style="margin-top: 2em;">{{viewBlog.title}}</h1>
+<h5>Created by : <b>{{viewBlog.username}}</b> | Created On : <b>{{viewBlog.timeStamp}}</b></h5>
+<h4>{{viewBlog.description}}</h4></div>
+<form action="#" id="usrform">
+
+  <input type="submit">
+</form>
+
+<textarea name="comment" form="usrform">Enter text here...</textarea>
+
+
+<div ng-repeat="b in bct ">  <!-- since global variable no need controller.rootscope just rootscope name -->
+{{2+2}}
+Post Comment Here
+By:<span ng-bind="b.userName"></span>
+
+
+      
+      <div class="text">Comments:<span ng-bind="b.bcomments"></span></div>
+      </div>
+
+
+ </body> 
+</html>
