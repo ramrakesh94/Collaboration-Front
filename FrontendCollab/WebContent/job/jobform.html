@@ -9,7 +9,7 @@
 <style>
 /* Form Styles */
 body {
-  background: #99FFCC;
+  
   font-family: 'proxima-nova', sans-serif;
   font-size: 14px;
   font-weight: 400;
@@ -138,15 +138,19 @@ textarea#wow{
 
 </style>
 <body>
-<div class='container'>
+<div class='container' style="background: #99FFCC;">
   <header>
     <h2><font face="Aclonica" size="8">Explore Jobs </h2>  
   </header>
   <!-- / START Form -->
   <div class='form'>
     <form ng-submit="jc.submit()">
+    <!-- <div class='field' ng-show="jc.job.id">
+        <label for='id'>ID</label>     readonly="true"
+        <input id='id' name='id' type='text' ng-model="jc.job.id" >
+      </div> -->
       <div class='field'>
-        <label for='username'>Title</label>
+        <label for='jobtitle'>Title</label>
         <input id='username' name='jobtitle' type='text' value='Amrit Sab' ng-model="jc.job.jobtitle">
       </div>
       <div class='field'>
@@ -162,15 +166,15 @@ textarea#wow{
         </p>
       </div>
       <div class='field'>
-        <label for='password'>Email</label>
+        <label for='email'>Email</label>
         <input id='password' name='email' type='email' value='Amarath19@gmail.com' ng-model="jc.job.email">
       </div>
       <div class='field'>
-        <label for='rpassword'>Status</label>
+        <label for='status'>Status</label>
         <input id='rpassword' name='status' type='text' value='Student' ng-model="jc.job.status">
       </div>
       <div class='field'>
-        <label for='rpassword'>Qualification</label>
+        <label for='qualification'>Qualification</label>
         <input id='rpassword' name='qualification' type='text' value='Engineer' ng-model="jc.job.qualification"">
       </div>
      

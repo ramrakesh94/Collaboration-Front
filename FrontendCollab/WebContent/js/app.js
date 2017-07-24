@@ -10,8 +10,15 @@ app.config(function($routeProvider) {
 	})
 
 	.when('/home', {
-		templateUrl : 'user/User.html' //Home/Home.html
+		templateUrl : 'index.html' //Home/Home.html
 
+	})
+	.when('/friendreq', {
+		templateUrl : 'user/friendreq.html',
+		controller : 'UserController',
+		controllerAs : 'uc'
+		
+			
 	})
 
 	
@@ -39,7 +46,7 @@ app.config(function($routeProvider) {
 
 	})
 	.when('/user', {
-		templateUrl : 'User.html'
+		templateUrl : 'user/User.html'
 
 	})
 
@@ -84,6 +91,13 @@ app.config(function($routeProvider) {
 		controllerAs : 'jc'
 
 	})
+	
+	/*.when('/chat', {
+		templateUrl : 'chat/chat.html',
+		controller:'ChatCtrl'
+
+	})
+	*/
 
 	.otherwise({
 		redirectTo : '/'

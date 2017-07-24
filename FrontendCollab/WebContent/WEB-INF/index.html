@@ -56,6 +56,15 @@
 <script type="text/javascript" src="job/JobService.js"></script>
 <script type="text/javascript" src="ApplyJob/ApplyJobService.js"></script>
 <script type="text/javascript" src="BlogComment/BlogCommentService.js"></script>
+<script type="text/javascript" src="Friend/FriendService.js"></script>
+<script type="text/javascript" src="Friend/FriendController.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- <script type="text/javascript" src="js/sockjs.js"></script>
+<script type="text/javascript" src="js/stomp.js"></script>
+<script type="text/javascript" src="chat/ChatService.js"></script>
+<script type="text/javascript" src="chat/ChatController.js"></script> -->
+
+
     <!--[if IE 7]>
     
     
@@ -115,16 +124,17 @@
                             
                             <li class="menu-item-simple-parent"><a href="#">Chats</a>
                                 <ul class="sub-menu">
-                                    <li><a href="blog-details.html">Group Chat</a></li>
-                                    <li><a href="blog-details-rhs.html">Private Chat</a></li>
+                                    <!-- <li><a href="#chat" ng-show="currentUser.role=='STUDENT'">Group Chat</a></li> -->
+                                     <li><a href="#">Private Chat</a></li> 
                                     
                                 </ul>
                                 <a class="dt-menu-expand">+</a>
                             </li>
-                            <li class="menu-item-simple-parent"><a href="portfolio.html">Friends</a>
+                            <li class="menu-item-simple-parent"><a href="#">Friends</a>
                             	<ul class="sub-menu">
                                     
-                                    <li><a href="portfolio-details-rhs.html">Add Friend</a></li>
+                                    <li><a href="#friendreq" ng-show="currentUser.role=='STUDENT'">Add Friend</a></li>
+                                    <li><a href="#pendreq" ng-show="currentUser.role=='STUDENT'">Pending Req</a></li>
                                     
                                 </ul>
                                 <a class="dt-menu-expand">+</a>
@@ -141,7 +151,7 @@
             
         </header>
       
- <div ng-view></div>
+ <div ng-view ></div>
 
 
 

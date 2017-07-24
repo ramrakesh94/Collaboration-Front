@@ -4,6 +4,13 @@
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
+<style>
+/*  .blog-entry
+{
+height:50px;
+} */
+ 
+</style>
 <body>
 <div id="menu-container">
             	<div class="container">
@@ -23,7 +30,7 @@
             </section>
             <div class="hr-invisible-very-small"  ></div>
             <div class="clear"></div>
-            <section id="primary" class="content-full-width transparent-bg"  ><!-- Primary Section -->
+            <section id="primary" class="content-full-width "  ><!-- Primary Section -->
                 <div class="clear" ></div>
             	<div class="fullwidth-section blog-items"  >
                     <div class="container"  >
@@ -53,23 +60,23 @@
                                         
                                         <p><span ng-bind="u.blogDescription"></span></p>
                                    
-                                    <div class="clear"></div>
+                                 <!--    <div class="clear"></div>
                                 </div>
                                 <div class="entry-body">
                                     <div class="alignleft">
                                         <p class="comments">
                                             <a title="Comment on Latin words Ipsum" href="#">
                                                 <span class="fa fa-comment"> </span>
-                                               <!--  Comments -->
+                                                Comments
                                             </a>
                                         </p>
                                         <p class="likes">
                                             <a title="Comment on Latin words Ipsum" href="#">
                                                 <span class="fa fa-heart"> </span>
-                                                <!-- Edit -->
+                                                Edit
                                             </a>
                                         </p>
-                                    </div>
+                                    </div> -->
                                     <div class="alignright">
                                         <a href="" ng-click="bc.get(u)" type="button"  class="read-more">
                                             Read More
@@ -77,10 +84,13 @@
                                         </a>
                                     </div>
                                     
-                                     <div ng-show="currentUser.cusId == u.userId">
-                                        <a href=""  type="button"  class="read-more">
+                                     <div > 
+                                        <a href="" ng-show="currentUser.cusId == u.userId" ng-click="bc.editandupdateBlog(u)" type="button" class="rmore" >
                                             Edit
-                                            <span class="fa fa-long-arrow-right"></span>
+                                            <span class="glyphicon glyphicon-edit"></span>
+                                            <a href="" ng-show="currentUser.cusId == u.userId" ng-click="bc.rejectBlog(u)" type="button"  class="rmore">
+                                            Delete
+                                            <span class="glyphicon glyphicon-trash"></span>
                                         </a>
                                     </div>
                                     </div>

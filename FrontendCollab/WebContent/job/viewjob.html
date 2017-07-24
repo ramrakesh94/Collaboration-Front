@@ -59,28 +59,38 @@
                                         </div>
                                         
                                    
-                                    <div class="clear"></div>
+                                  <!--   <div class="clear"></div>
                                 </div>
                                 <div class="entry-body">
-                                    <div class="alignleft">
+                                    <div class="alignleft"> -->
                                         <!-- <p class="comments">
                                             <a title="Comment on Latin words Ipsum" href="#">
                                                 <span class="fa fa-comment"> </span>
                                                 Comments
                                             </a>
                                         </p> -->
-                                        <p class="likes">
+                                       <!--  <p class="likes">
                                             <a title="Comment on Latin words Ipsum" href="#">
                                                 <span class="fa fa-heart"> </span>
-                                               <!--  Edit -->
+                                                Edit
                                             </a>
                                         </p>
-                                    </div>
+                                    </div> -->
                                     <div class="alignright">
                                         <a href="" ng-click="jc.applyJobs(j)"  ng-show="currentUser.role=='STUDENT'" type="button" class="read-more">
                                             Apply
                                             <span class="fa fa-long-arrow-right"></span>
                                         </a>
+                                        
+                                     <div > 
+                                        <a href="" ng-show="currentUser.role=='ADMIN'" ng-click="jc.editandupdateJob(j)" type="button" class="rmore" >
+                                            Edit
+                                            <span class="glyphicon glyphicon-edit"></span>
+                                            <a href="" ng-show="currentUser.role=='ADMIN'"  ng-click="jc.rejectJob(j)" type="button"  class="rmore">
+                                            Delete
+                                            <span class="glyphicon glyphicon-trash"></span>
+                                        </a>
+                                    </div>
                                     </div>
                                     </div>
                                     </div>

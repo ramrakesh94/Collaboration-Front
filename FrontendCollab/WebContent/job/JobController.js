@@ -20,6 +20,8 @@ app.controller('JobController',['$scope','JobService','$location','ApplyJobServi
 							self.submit = submit;
 						    self.update = update;
 						    self.get = get;
+						    self.editandupdateJob=editandupdateJob;
+						    self.rejectJob = rejectJob;
 						    self.applyJobs=applyJobs;
 						    self.BringAllAppJobs=BringAllAppJobs;
 						    self.BringAllMyJobs=BringAllMyJobs;
@@ -92,6 +94,30 @@ app.controller('JobController',['$scope','JobService','$location','ApplyJobServi
 												});
 							};
 							
+							function editandupdateJob(job){
+								
+								console.log(job);
+								$rootScope.job=job; // rootscope name MUST be job only then it can be mapped with front end
+								console.log(self.job);
+								
+								$location.path("/job");
+								
+					};
+					function rejectJob(viewJobs){
+				    	JobService.deleteJobRequest(viewJobs.id).then(function(d) {
+							self.deleteJobRequestId = d;		    			
+							console.log(self.deleteJobRequestId);
+							console.log($rootScope.currentUser);
+							console.log($rootScope.currentUser.cusId);
+							
+								
+							$location.path("/viewjob")
+								
+				    	}, function(errResponse){
+				                console.error('Error while deleting JobRequest');
+				            });
+				    };
+
 							
 
 							
@@ -112,9 +138,20 @@ app.controller('JobController',['$scope','JobService','$location','ApplyJobServi
 
 							function updateJob(currentJob){
 								console.log("updateJob...")  
-								JobService.updateJob(currentJob).then(
-										self.fetchAllJobs, null);
+								JobService.updateJob(currentJob).then(function(d){
+									self.updatedJob = d;		    			
+									console.log(self.updatedJob);
+									$rootScope.job = {};
+									alert("Thank you for updating message")
+									$location.path("/viewjob")
+						    	}, function(errResponse){
+						                console.error('Error while deleting BlogRequest');
+						            });
 							};
+	
+								
+									
+						
 
 							function update() {
 								{
@@ -144,10 +181,19 @@ app.controller('JobController',['$scope','JobService','$location','ApplyJobServi
   
 							 function submit() {
 								{
-									console.log('Saving New Job', self.job);
-									createJob(self.job);
+									 console.log(self.job.id);
+									 if(self.job.id==undefined){
+												
+										 createJob(self.job);
+									 }
+									 else{
+											console.log('Updating Job ', self.job);					
+											
+											updateJob(self.job);
+									 }
+									
 								}
-								reset();  
+								/*reset();  */
 							};
 
 							function reset() {

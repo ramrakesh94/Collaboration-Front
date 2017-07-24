@@ -11,7 +11,7 @@ app.service('JobService', ['$http','$q','$rootScope',
 				fetchAllJobs: fetchAllJobs,
 				createJob: createJob,
 				updateJob:updateJob,
-			       
+				deleteJobRequest:deleteJobRequest  
 			    };
 				
 				
@@ -46,6 +46,17 @@ app.service('JobService', ['$http','$q','$rootScope',
 						console.error('Error while updating Job');
 						return $q.reject(errResponse);
 					});
+				};
+				function deleteJobRequest(id){
+					console.log("Deleting Job Request");
+					return $http.delete(BASE_URL + '/jobs/'+id).then(function(response){
+							
+						return response.data;
+							},function(errResponse) {
+								console.error('Error while deleting Job request');
+								return $q.reject(errResponse);
+							});
+			
 				};
 
 

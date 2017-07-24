@@ -89,7 +89,7 @@ app.service('BlogService', [
 			
 			function reject(Blog) {
 				console.log("calling reject Blogs ")
-				return $http.put(BASE_URL + '/rejectBlog', Blog) // 2
+				return $http.put(BASE_URL + '/blogs', Blog) // 2
 				.then(function(response) {
 					return response.data;
 				}, function(errResponse) {

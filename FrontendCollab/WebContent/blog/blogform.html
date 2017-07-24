@@ -4,12 +4,18 @@
 <meta charset="ISO-8859-1">
 <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Aclonica" />
 <title>Insert title here</title>
-</head>
+</head>  <!-- how to include space in blog description -->
+<script> 
+/* function formBlog() {
+
+return false;
+} */
+</script>
 
 <style>
 /* Form Styles */
 body {
-  background: #6495ED;
+
   font-family: 'proxima-nova', sans-serif;
   font-size: 14px;
   font-weight: 400;
@@ -138,22 +144,28 @@ textarea#wow{
 
 </style>
 <body>
-<div class='container'>
+<div class='container' style="  background: #6495ED;">
   <header>
     <h2><font face="Aclonica" size="8"> Be A Blogger </h2>  
   </header>                                  <!-- blogid!=null -->
   <!-- / START Form -->
   <div class='form'>
   <form ng-submit="bc.submit()">
-   
+                                                    <!-- editing based on blog id -->
+  
+  <div class='field' ng-show="bc.blog.blogId">
+        <label for='blogId'></label>     <!-- readonly="true" -->
+        <input id='blogid' name='blogId' type='hidden' ng-model="bc.blog.blogId" >
+      </div>
+  
       <div class='field'>
-        <label for='username'>Blog Title</label>
-        <input id='username' name='blogtitle' type='text' value='Machine Learning Todays Most Wanted tool' ng-model="bc.blog.blogtitle" >
+        <label for='blogtitle'>Blog Title</label>
+        <input id='blogtitle' name='blogtitle' type='text'  ng-model="bc.blog.blogtitle"  >
       </div>
       <div class='field'>
       <p class="formfield">
         <label>Description</label>
-        <textarea id="wow" rows="12" name='blogDescription' ng-model="bc.blog.blogDescription" > HI</textarea>
+        <textarea id="blogdesc" rows="12" name='blogDescription' ng-model="bc.blog.blogDescription" ng-blur="isAlphanumeric()" required></textarea>
         </p>
   
     </div>

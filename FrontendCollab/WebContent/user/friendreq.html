@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<style>
+.button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-
+    block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+</style>
+</head>
+<body style="padding-left: 0em;">
+<div class="column-content-region col-sm-3">
+<div ng-init="uc.fetchAllUsers()">
+<font color="blue"><h2>Add Friend</h2></font>
+
+<div ng-repeat="all in uc.asd" ng-if="all.name != currentUser.name" >
+<nav style="center">
+<table>
+<th><h1><span ng-bind="all.name"></span>  </h1></th>
+<tr>
+<td><a href="" ng-click="uc.send(all)"><button type="button" class="button"">Add buddy</button></a></td>
+<!-- <td><button type="button" class="button">Cancel Request</button></td> -->
+</tr>
+</table>
+</nav>
+</div></div></div>
+<div class="column-content-region col-sm-3" style="margin-left: 4em;">
+<div ng-init="uc.requestedFriend()"> 
+<font color="blue"><h2>Requested Friend</h2></font>
+<div  ng-repeat="req in uc.reqFriend" ng-if="req.name != currentUser.name">
+<nav style="center">
+<table>
+<th><h1><span ng-bind="req.userName"></span>  </h1></th> <!-- ng-show="currentUser.cusId == req.cusId" -->
+<tr>
+<td><a href=""  ng-click="uc.acceptFriend(req)"><button type="button" class="button"">Accept</button></a></td>
+<td><a href="" ng-click="uc.deleteFriendRequest(req)"><button type="button" class="button"">Reject</button></a></td>
+</tr>
+</table>
+</nav>
+</div></div></div>
+<div class="column-content-region col-sm-3" style="margin-left: 4em;">
+<div ng-init="uc.AcceptedFriendCurrentUser()"> 
+<font color="blue"><h2>Friend List</h2></font>
+<div  ng-repeat="acc in uc.accFriend">
+<nav style="center">
+<table>
+<th><h1><span ng-bind="acc.friendName"></span>  </h1></th>
+<tr>
+</tr>
+</table>
+</nav>
+</div></div></div>
+</body>
+</html>

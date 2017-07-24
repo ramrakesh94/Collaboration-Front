@@ -1,17 +1,19 @@
 'use strict';
 
 app.controller('BlogController', ['$scope','BlogService','BlogCommentService','$location','$rootScope','$cookieStore','$http',
-		function($scope, BlogService,BlogCommentService, $location, $rootScope, $cookieStore,  // i have deleted blogcomment service in line 3 and 4
+		function($scope, BlogService,BlogCommentService, $location, $rootScope, $cookieStore,  
 				$http) {
 			console.log("BlogController...")
+			//console.log(self.blog);
 			console.log("BlogCommentControlloerrrrrrr.............")
-			var self = this;
+			var self = this; // this will refer to self to current obj
 			self.blog = {blogId : '',blogtitle : '',status : '',blogDescription : '',postedOn : '',name:'',userId:''};
 			// self.blog = {id:'',title : '',status: '',description:''};
 			self.blogcomment = {id:'',blogId:'',userId:'',bcomments:'',username:'',mail:''};
 			self.blogs = [];		// json array
 			self.blogcomments= [];
-
+			var a = 0;
+			self.blog = $rootScope.blog;
 			self.createBlogComment = createBlogComment;
 			self.submit = submit;
 		    self.update = update;
@@ -21,12 +23,13 @@ app.controller('BlogController', ['$scope','BlogService','BlogCommentService','$
 		    self.notAcceptedBlogs = notAcceptedBlogs;
 			self.accept = accept;
 			self.rejectBlog = rejectBlog;
+			self.editandupdateBlog=editandupdateBlog;
 		    $scope.count=0;
 			fetchAllBlogs();
 			AcceptedBlogs();
 			//notAcceptedBlogs();
-			reset();
-			
+	/*		reset();
+		*/	
 			function fetchAllBlogs() {
 				BlogService.fetchAllBlogs().then(function(d) {
 					self.blogs = d;
@@ -85,38 +88,69 @@ app.controller('BlogController', ['$scope','BlogService','BlogCommentService','$
 				console.log("createBlog...")
 				BlogService.createBlog(blog).then(function(d) {
 					alert("Thank you for creating message")
-					$location.path("/ViewB")
+					$location.path("/viewblog")
 				}, function(errResponse) {
 					console.error('Error while creating Blog.');
 				});
 			};
+			
+			
+			function editandupdateBlog(blog){
+				
+						console.log(blog);
+						$rootScope.blog=blog; // rootscope name MUST be blog only then it can be mapped with front end
+						console.log(self.blog);
+						$location.path("/blog");
+						
+			};
 
+			
+			
+			
+			
 			function reject(id){
 				console.log("reject...")
 				var reason = prompt("Please enter the reason");
 				BlogService.reject(id, reason).then(function(d) {
 					self.blog = d;
 					self.fetchAllBlogs
-					$location.path("/manage_Blogs")
+					$location.path("/blog reject")
 					alert(self.Blog.errorMessage)
 
 				}, null);
 			};
 			
 			function rejectBlog(viewBlogs){
-		    	BlogService.deleteBlogRequest(viewBlogs.id).then(function(d) {
+		    	BlogService.deleteBlogRequest(viewBlogs.blogId).then(function(d) {
 					self.deleteBlogRequestId = d;		    			
 					console.log(self.deleteBlogRequestId);
+					console.log($rootScope.currentUser);
+					console.log($rootScope.currentUser.cusId);
+					if($rootScope.currentUser.role=="ADMIN")
+						{
 		    			$location.path("/admin")
+						}
+					else
+						{
+						$location.path("/viewblog")
+						}
 		    	}, function(errResponse){
 		                console.error('Error while deleting BlogRequest');
 		            });
 		    };
 
-			function updateBlog(currentBlog){ // blogid!= null , div ng show 
+			function updateBlog(currentBlog){ 
 				console.log("updateBlog...")
-				BlogService.updateBlog(currentBlog).then(self.fetchAllBlogs,
-						null);
+				
+				BlogService.updateBlog(currentBlog).then(function(d) {
+					self.updatedBlog = d;		    			
+					console.log(self.updatedBlog);
+					$rootScope.blog = {};
+					alert("Thank you for updating message")
+					$location.path("/viewblog")
+		    	}, function(errResponse){
+		                console.error('Error while deleting BlogRequest');
+		            });
 			};
 
 			function update() {
@@ -125,7 +159,7 @@ app.controller('BlogController', ['$scope','BlogService','BlogCommentService','$
 							$rootScope.currentBlog);
 					updateBlog($rootScope.currentBlog);
 				}
-				reset();
+				/*reset();*/
 			};
 			function accept(viewBlogs) {
 				{
@@ -171,23 +205,33 @@ app.controller('BlogController', ['$scope','BlogService','BlogCommentService','$
 				$location.path("/adminBlogd");
 			}
 			
-			 function submit() {
+			function delBlog(blog)
+			{
 				
-					console.log('Saving New Blog', self.blog);
-					if(self.blog.id == null){
-						
-					createBlog(self.blog);
+				
+				
+			}
+			
 
-					}else{
-						
-					}
-				reset();
+			
+			 function submit() {
+				 console.log(self.blog.blogId);
+			 if(self.blog.blogId==undefined){
+					console.log('Saving New Blog', self.blog);		
+					
+					createBlog(self.blog);
+			 }else{
+					console.log('Updating Blog', self.blog);					
+					
+					updateBlog(self.blog);
+			 }
+				/*reset();*/
 			};
 
-			function reset() {
-				self.blog = {id : null,title : '',status : '',description : '',addDate : '',userId:'',username:''};
+			/*function reset() {
+				self.blog = {blogId : null,title : '',status : '',description : '',addDate : '',userId:'',username:''};
 				self.blogcomment = {id:null,blogId:'',userId:'',bcomments:'',userName:'',timeStamp:'',userMail:''};
 				//reset Form
-			};
+			};*/
 
 			} ]);
