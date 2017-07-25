@@ -47,13 +47,13 @@ app.controller('UserController',['$scope','UserService','FriendService','$locati
 									
 									console.log("fetchAllRequestedFriend...")
 									FriendService.fetchAllRequestedfriends($scope.loginUser.cusId).then(function(d) {
-										self.friends = d;
+										self.friends = d; // add buddy friends
 										console.log(self.friends)					
 							// whats this doing
 										
 											for(j=0; j<self.us.length; j++){ // all username except admin
 												for(i=0; i<self.friends.length; i++){ // all friends name
-												if(self.friends[i].friendId === self.us[j].cusId){
+												if(self.friends[i].friendId == self.us[j].cusId){
 													self.us.splice(j, 1); // splicing one at a time
 													console.log(self.us)
 												}
@@ -113,9 +113,19 @@ app.controller('UserController',['$scope','UserService','FriendService','$locati
 									$rootScope.loginUser =$rootScope.currentUser;
 									console.log("GetAllAcceptedFriendCurrentUser...")
 									FriendService.fetchAcceptedFriends($rootScope.loginUser.name).then(function(d) {
-														self.accFriend = d;
-														
+														self.accFriend = d;													
 														console.log(self.accFriend)
+														FriendService.fetchAcceptedFriends1($rootScope.loginUser.name).then(function(d) {
+															self.accFriend1 = d;													
+															console.log(self.accFriend)
+															
+															
+															
+														},function(errResponse) {  
+															console.error('Error while fetching Accepted list');
+														});
+														
+														
 													},function(errResponse) {  
 														console.error('Error while fetching Accepted list');
 													});
@@ -239,7 +249,7 @@ app.controller('UserController',['$scope','UserService','FriendService','$locati
 								}, function(response) {
 									console.log(response.status)
 									$scope.error=response.data;
-									/*$scope.message = response.data.message*/
+									$scope.message = response.data.message
 									$location.path('/login')
 								})  
 							};

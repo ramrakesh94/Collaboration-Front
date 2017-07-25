@@ -1,4 +1,4 @@
-/*
+
 
 
 app.filter('reverse', function() {
@@ -16,7 +16,7 @@ app.filter('reverse', function() {
 	});
 
 	app.factory('socket', function($rootScope) {
-	  alert('app factory')
+	  alert('Ready to Chat Eh')
 	    var socket = new SockJS('/BackendCollaboration/portfolio'); //backend_project2/portfolio
 	    var stompClient = Stomp.over(socket);
 	    stompClient.connect('', '', function(frame) {
@@ -26,4 +26,4 @@ app.filter('reverse', function() {
 	    return {
 	      stompClient: stompClient
 	    };
-	});*/
+	});

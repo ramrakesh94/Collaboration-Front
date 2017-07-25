@@ -6,7 +6,7 @@ app.config(function($routeProvider) {
 	         
          
 	.when('/', {
-		templateUrl : 'index.html'  //Home/Home.html
+		templateUrl : 'index.html'  //home/home2.html
 	})
 
 	.when('/home', {
@@ -92,12 +92,12 @@ app.config(function($routeProvider) {
 
 	})
 	
-	/*.when('/chat', {
+	.when('/chat', {
 		templateUrl : 'chat/chat.html',
 		controller:'ChatCtrl'
 
 	})
-	*/
+	
 
 	.otherwise({
 		redirectTo : '/'

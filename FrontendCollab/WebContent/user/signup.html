@@ -52,7 +52,7 @@ body {
 /* Magic Starts here */
 .form {
   background: #fff;
-  border: 3px solid #e5e5e5;
+  /* border: 3px solid #e5e5e5; */
   border-radius: 40px;
 }
 .form:before,
@@ -65,13 +65,13 @@ body {
   width: 60%;
   width:590px;
   padding: 5px 20px 5px;
-  border-bottom: 1px solid #e5e5e5;
+  /* border-bottom: 1px solid #e5e5e5; */
   box-sizing: border-box;
   float: left;
   transition: 0.3s linear;
 }
 .form .field:nth-child(2n) {
-  border-left: 1px solid #e5e5e5;
+  /* border-left: 1px solid #e5e5e5; */
 }
 .form .field label {
   color: #000000;
@@ -83,7 +83,7 @@ body {
   outline: none;
   background: none;
   width: 60%;
-  border: 0;
+  
   padding: 5px 0;
   color: #666;
   font-family: 'proxima-nova';
@@ -153,6 +153,13 @@ font-family: Aclonica;
 }                                                /* ng-model - bind front end to back end
                                                             bind back end to front end */
 
+
+input.ng-invalid.ng-touched
+{
+border: 2px solid red;
+}
+
+
 </style>
 <body>
 <div class='container'>
@@ -161,41 +168,44 @@ font-family: Aclonica;
   </header>
   <!-- / START Form -->
   <div class='form'>          
-    <form ng-submit="uc.submit()">
+    <form name="signup" ng-submit="uc.submit()" novalidate>
       <div class='field'>
         <label for='username'>Name</label>
-        <input id='username' name='name' type='text' value='Rocky June' ng-model="uc.user.name">
+        <input  name='name' type='text' value='Rocky June' ng-model="uc.user.name" ng-required="true"/>
+      <div ng-show="signup.name.touched && signup.name.invalid">
+      <small style="colour: red; display:block; text-align:center;">Enter a valid name</small>
+      </div>
       </div>
       <div class='field'>
         <label for='email'>Username</label>
-        <input id='email' name='username' type='text' value='Raizada' ng-model="uc.user.username">
+        <input  name='username' type='text' ng-model="uc.user.username"  ng-required="true"/>
       </div>
       <div class='field'>
         <label for='email'>Password</label>
-        <input id='email' name='password' type='password' value='Raizada' ng-model="uc.user.password">
+        <input  name='password' type='password'  ng-model="uc.user.password"  ng-required="true"/>
       </div>
       <div class='field'>
         <label for='email'>Email Address</label>
-        <input id='email' name='email' type='email' value='rair012@gmail.com' ng-model="uc.user.email">
+        <input  name='email' type='email'  ng-model="uc.user.email"  ng-required="true"/>
       </div>
       <div class='field'>
         <label for='password'>Address</label>
-        <input id='password' name='adresss' type='text' value='Coimbatore'  ng-model="uc.user.address">
+        <input  name='adresss' type='text' ng-model="uc.user.address"  ng-required="true"/>
       </div>
       <div class='field'>
         <label for='rpassword'>ZIP</label>
-        <input id='rpassword' name='zip' type='text' value='823985' ng-model="uc.user.zip">
+        <input name='zip' type='text'  ng-model="uc.user.zip"  ng-required="true"/>
       </div> 
       <div class='field'>
         <label for='rpassword'>Mobile</label>
-        <input id='rpassword' name='mobile' type='text' value='996182667' ng-model="uc.user.mobile">
+        <input name='mobile' type='text'  ng-model="uc.user.mobile"  ng-required="true"/>
       </div>
      
       
       <div class='field'>
         <label for='rpassword'>Role</label>
       
-       <select  class="form-control" placeholder="select Role " name="role" ng-model="uc.user.role">
+       <select  class="form-control" placeholder="select Role " name="role" ng-model="uc.user.role" >
       <option value="ALUMNI">Alumni</option>
 	  <option value="STUDENT">Student</option>
 	  <option value="EMPLOYEE">Employee</option>

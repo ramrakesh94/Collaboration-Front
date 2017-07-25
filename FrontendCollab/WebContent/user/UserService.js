@@ -99,11 +99,15 @@ app.service('UserService', ['$http', '$q','$rootScope', function($http, $q,$root
             	   console.log("Calling the method authenticate with the user :"+user)
           		 
                 return $http.post(BASE_URL+'/login',user).then(function(response){
+                	console.log(response);
                                     return response; 
                                   /*  $scope.userId=user.userid;
                                     $scope.userName=user.name;*///user json object
                                 }, 
-                               null
+                                function(errResponse){
+                                    console.error('Error while logged in user');
+                                    return $q.reject(errResponse);
+                                }
                         );
         }
          

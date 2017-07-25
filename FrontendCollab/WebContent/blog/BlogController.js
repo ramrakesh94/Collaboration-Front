@@ -205,26 +205,82 @@ app.controller('BlogController', ['$scope','BlogService','BlogCommentService','$
 				$location.path("/adminBlogd");
 			}
 			
-			function delBlog(blog)
+			/*function delBlog(blog)
 			{
 				
 				
 				
-			}
+			}*/
 			
+			
+			
+			
+			function notEmpty(elem, helperMsg) {
+				if (elem.value.length == 0) {
+					alert(helperMsg);
+					elem.focus(); // set the focus to this input
+					return false;
+				}
+				return true;
+			}
+			function isAlphabet(elem, helperMsg) {
+				var alphaExp = /^[a-z A-Z]+$/;
+				if (elem.value.match(alphaExp)) {
+					return true;
+				} else {
+					alert(helperMsg);
+					elem.focus();
+					return false;
+				}
+			}
+			function isAlphanumeric(elem, helperMsg) {
+				var alphaExp = /^[0-9a-zA-Z]+$/;
+				if (elem.value.match(alphaExp)) {
+					return true;
+				} else {
+					alert(helperMsg);
+					elem.focus();
+					return false;
+				}
+			}
 
 			
+			
+			
+			
+			
 			 function submit() {
-				 console.log(self.blog.blogId);
-			 if(self.blog.blogId==undefined){
-					console.log('Saving New Blog', self.blog);		
-					
-					createBlog(self.blog);
-			 }else{
-					console.log('Updating Blog', self.blog);					
-					
-					updateBlog(self.blog);
-			 }
+				 
+				 
+				 
+				 var blogname = document.getElementById('blogtitle');
+					var blogdesc = document.getElementById('blogdesc');
+					if (notEmpty(blogname, " Blog Name Should not be empty")) 
+					{
+						
+						if (isAlphabet(blogname, "Please enter only letters for Blog Name "))
+							{
+							if (notEmpty(blogdesc, "Description Should not be empty")) 
+							{
+								/*if (isAlphanumeric(blogdesc, "Please enter alpha-numeric characters for Description"))
+									{*/
+									 console.log(self.blog.blogId);
+									 if(self.blog.blogId==undefined){
+											console.log('Saving New Blog', self.blog);		
+											
+											createBlog(self.blog);
+									 }else{
+											console.log('Updating Blog', self.blog);					
+											
+											updateBlog(self.blog);
+									/* }*/
+									}
+							}
+							}
+							}
+				
+				 
+			
 				/*reset();*/
 			};
 

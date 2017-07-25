@@ -15,6 +15,7 @@ app.service('FriendService', ['$http','$q','$rootScope',
 				fetchRequestedfriends : fetchRequestedfriends,
 				updateFriendReq: updateFriendReq,
 				fetchAcceptedFriends:fetchAcceptedFriends,
+				fetchAcceptedFriends1:fetchAcceptedFriends1,
 				deleteFriendRequest:deleteFriendRequest
 			    };
 				
@@ -51,6 +52,13 @@ app.service('FriendService', ['$http','$q','$rootScope',
 					function fetchAcceptedFriends(friendName) {
 						console.log("calling fetchBy User name ")
 						return $http.get(BASE_URL + '/friendsAccepted/' +friendName).then(
+								function(response) {
+									return response.data;
+								}, null);
+					};
+					function fetchAcceptedFriends1(friendName) {
+						console.log("calling fetchBy User name ")
+						return $http.get(BASE_URL + '/friendsAccepted1/' +friendName).then(
 								function(response) {
 									return response.data;
 								}, null);

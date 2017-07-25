@@ -1,4 +1,4 @@
-'use strict';
+/*'use strict';
 
 app.controller('FriendController',['$scope','FriendService','$location','$rootScope','$cookieStore','$http',function($scope, FriendService, $location, $rootScope,$cookieStore, $http) {
 							console.log("FriendController...")
@@ -7,9 +7,9 @@ app.controller('FriendController',['$scope','FriendService','$location','$rootSc
 							//this.job =  {id:'',title : '',description: '',addDate:'',qualification:'',status:''};
 							this.friends = []; // json array
 
-							/*$scope.orderByMe = function(x) {  
+							$scope.orderByMe = function(x) {  
 								$scope.myOrderBy = x;
-							}*/  
+							}  
 
 
 							self.submit = submit;
@@ -116,3 +116,4 @@ app.controller('FriendController',['$scope','FriendService','$location','$rootSc
 							};
 
 						} ]);
+*/

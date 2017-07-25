@@ -1262,7 +1262,7 @@
 	
 	.QLoader { background-color: #000000; height: 1px; }
 	.QOverlay { background-color: #fff; z-index: 9999999; width: 110% !important; }	
-	.transparent-bg { background-image: url(images/transparent-bg.png); } 
+	.transparent-bg {  } 
 
 	/*----*****---- << 404 Page >> ----*****----*/
 

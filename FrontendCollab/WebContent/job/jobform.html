@@ -5,6 +5,15 @@
 <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Aclonica" />
 <title>Insert title here</title>
 </head>
+<script>
+
+
+
+</script>
+
+
+
+</script>
 
 <style>
 /* Form Styles */
@@ -145,37 +154,37 @@ textarea#wow{
   <!-- / START Form -->
   <div class='form'>
     <form ng-submit="jc.submit()">
-    <!-- <div class='field' ng-show="jc.job.id">
-        <label for='id'>ID</label>     readonly="true"
-        <input id='id' name='id' type='text' ng-model="jc.job.id" >
-      </div> -->
+    <div class='field' ng-show="jc.job.id">
+        <label for='id'>ID</label>     
+        <input id='id' name='id' type='text' ng-model="jc.job.id" readonly="true">
+      </div>
       <div class='field'>
         <label for='jobtitle'>Title</label>
-        <input id='username' name='jobtitle' type='text' value='Amrit Sab' ng-model="jc.job.jobtitle">
+        <input id='jobtitle' name='jobtitle' type='text' ng-model="jc.job.jobtitle">
       </div>
       <div class='field'>
       <p class="formfield">
         <label>Company Name</label>
-        <textarea id="wow" rows="5"  name='companyName' ng-model="jc.job.companyName"></textarea>
+        <textarea id="companyname" rows="5"  name='companyName' ng-model="jc.job.companyName"></textarea>
         </p>
       </div>
      <div class='field'>
       <p class="formfield">
         <label>Technical Knowledge</label>
-        <textarea id="wow" rows="5" name='skills' ng-model="jc.job.skills"></textarea>
+        <textarea id="tech" rows="5" name='skills' ng-model="jc.job.skills"></textarea>
         </p>
       </div>
       <div class='field'>
         <label for='email'>Email</label>
-        <input id='password' name='email' type='email' value='Amarath19@gmail.com' ng-model="jc.job.email">
+        <input id='mail' name='email' type='text' ng-model="jc.job.email">
       </div>
       <div class='field'>
         <label for='status'>Status</label>
-        <input id='rpassword' name='status' type='text' value='Student' ng-model="jc.job.status">
+        <input id='stat' name='status' type='text'  ng-model="jc.job.status">
       </div>
       <div class='field'>
         <label for='qualification'>Qualification</label>
-        <input id='rpassword' name='qualification' type='text' value='Engineer' ng-model="jc.job.qualification"">
+        <input id='qualif' name='qualification' type='text' ng-model="jc.job.qualification"">
       </div>
      
       

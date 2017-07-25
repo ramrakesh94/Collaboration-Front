@@ -1,4 +1,4 @@
-/*app.controller('ChatCtrl', ['$rootScope' ,'$scope', 'socket', function($rootScope ,$scope, socket) {
+app.controller('ChatCtrl', ['$rootScope' ,'$scope', 'socket', function($rootScope ,$scope, socket) {
     alert('entering chat controller')
     $scope.chats = [];
     $scope.stompClient = socket.stompClient;
@@ -55,19 +55,19 @@
     
     
     $scope.$on('sockConnected', function(event, frame) {
-        $scope.userName=$rootScope.currentUser.username;
+        $scope.userName=$rootScope.currentUser.name;
   
-        $scope.user=$rootScope.currentUser.username;
-        *//**
+        $scope.user=$rootScope.currentUser.name;
+        /**
         $scope.stompClient.subscribe("/queue/chats" + queueSuffix, function(message) {
         	alert('QUEUE SUFFIX ' + queueSuffix)
         	alert(message)
             $scope.processIncomingMessage(message, false);
         });
-    *//*
+    */
         $scope.stompClient.subscribe( "/queue/chats/"+$scope.userName, function(message) {
         	
-            $scope.processIncomingMessage(message, false);
+            $scope.processIncomingMessage(message, false); // should i change this to true
         });
         
         
@@ -101,4 +101,4 @@
     };
  
  
-}]);*/
+}]);

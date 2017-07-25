@@ -20,13 +20,14 @@ app.controller('JobController',['$scope','JobService','$location','ApplyJobServi
 							self.submit = submit;
 						    self.update = update;
 						    self.get = get;
+						    self.job = $rootScope.job;//newlyadded
 						    self.editandupdateJob=editandupdateJob;
 						    self.rejectJob = rejectJob;
 						    self.applyJobs=applyJobs;
 						    self.BringAllAppJobs=BringAllAppJobs;
 						    self.BringAllMyJobs=BringAllMyJobs;
 							fetchAllJobs(); // why no self for the two functions
-							reset();
+							/*reset();*/
 						
 							
 							function fetchAllJobs() {
@@ -98,7 +99,8 @@ app.controller('JobController',['$scope','JobService','$location','ApplyJobServi
 								
 								console.log(job);
 								$rootScope.job=job; // rootscope name MUST be job only then it can be mapped with front end
-								console.log(self.job);
+								
+								console.log($rootScope.job);
 								
 								$location.path("/job");
 								
@@ -118,8 +120,7 @@ app.controller('JobController',['$scope','JobService','$location','ApplyJobServi
 				            });
 				    };
 
-							
-
+				    
 							
 
 							
@@ -159,7 +160,7 @@ app.controller('JobController',['$scope','JobService','$location','ApplyJobServi
 											$rootScope.currentJob);
 									updateJob($rootScope.currentJob);
 								}
-					 			reset();
+					 			/*reset();*/
 							};
 
 							
@@ -178,28 +179,146 @@ app.controller('JobController',['$scope','JobService','$location','ApplyJobServi
 								
 							};
 							
+							function notEmpty(elem, helperMsg) {
+						    	if (elem.value.length == 0) {
+						    		alert(helperMsg);
+						    		elem.focus(); // set the focus to this input
+						    		return false;
+						    	}
+						    	return true;
+						    }
+						    function isNumeric(elem, helperMsg) {
+						    	var numericExpression = /^[0-9]+$/;
+						    	if (elem.value.match(numericExpression)) {
+						    		return true;
+						    	} else {
+						    		alert(helperMsg);
+						    		elem.focus();
+						    		return false;
+						    	}
+						    }
+						    function isAlphabet(elem, helperMsg) {
+						    	var alphaExp = /^[a-zA-Z]+$/;
+						    	if (elem.value.match(alphaExp)) {
+						    		return true;
+						    	} else {
+						    		alert(helperMsg);
+						    		elem.focus();
+						    		return false;
+						    	}
+						    }
+						    function isAlphanumeric(elem, helperMsg) {
+						    	var alphaExp = /^[0-9a-zA-Z\.\-]+$/;
+						    	if (elem.value.match(alphaExp)) {
+						    		return true;
+						    	} else {
+						    		alert(helperMsg);
+						    		elem.focus();
+						    		return false;
+						    	}
+						    }
+						    function emailValidator(elem, helperMsg) {
+						    	var emailExp = /^[\w\-\.\+]+\@[a-zA-Z0-9\.\-]+\.[a-zA-z0-9]{2,4}$/;
+						    	if (elem.value.match(emailExp)) {
+						    		return true;
+						    	} else {
+						    		alert(helperMsg);
+						    		elem.focus();
+						    		return false;
+						    	}
+						    }
+
+							
   
-							 function submit() {
+							 function submit() 
 								{
-									 console.log(self.job.id);
-									 if(self.job.id==undefined){
-												
-										 createJob(self.job);
-									 }
-									 else{
-											console.log('Updating Job ', self.job);					
-											
-											updateJob(self.job);
-									 }
 									
-								}
+										// Make quick references to our fields
+										var jobname = document.getElementById('jobtitle');
+										
+										var cname = document.getElementById('companyname');
+										var tech = document.getElementById('tech');
+										var mail = document.getElementById('mail');
+										var stat = document.getElementById('stat');
+										var qualif = document.getElementById('qualif');
+										// Check each input in the order that it appears in the form!
+										if (notEmpty(jobname, "Name Should not be empty")) 
+										{
+											if (isAlphabet(jobname, "Please enter only letters for job name"))
+												{
+												if (notEmpty(cname,
+												"Company Name Should not be empty")) 
+												
+											{
+												if (isAlphabet(cname,
+												"Please enter a valid company name")) 
+											{
+													if (notEmpty(tech,
+													"Tech skills Should not be empty"))
+													{	
+														if (isAlphabet(tech,
+														"  Letters Only for Skill")) 
+														{	
+															
+														if (notEmpty(mail,
+														" EmailId Should not be empty")) 
+														{
+													if (emailValidator(
+															mail,
+															"Please enter a valid email")) 
+													{
+														
+														if (notEmpty(stat,
+														"Should not be empty")) 
+													 {
+															if (isAlphabet(stat,
+															"Enter a valid status"))
+											         {
+																if (notEmpty(qualif,
+																		"Qualification Should not be empty")) 
+																{
+																	if (isAlphanumeric(qualif,
+																			"Enter valid data")) 
+																	{
+																		
+																			
+																				
+																						
+																		console.log(self.job.id);
+																		 if(self.job.id==undefined){
+																					
+																			 createJob(self.job);
+																		 }
+																		 else{
+																				console.log('Updating Job ', self.job);					
+																				
+																				updateJob(self.job);
+																		 }
+																		
+																	}
+																							}
+																						
+																					}
+																				}
+																			}
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+										
+										/*return false;*/
+								
+									 
 								/*reset();  */
 							};
 
-							function reset() {
+		/*					function reset() {
 								self.job = {id:null,title : '',companyName: '',technicalKnowledge:'',email:'',addDate:'',qualification:'',status:''};
 								//$scope.myForm.$setPristine(); // reset Form
 								self.appjob = {ajId:null,jobsid : '',jobname: '',userId:'',userName:'',dateofapply:'',timeofapply:''};
 							};
-
+*/
 						} ]);
