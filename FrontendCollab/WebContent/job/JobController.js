@@ -4,10 +4,10 @@ app.controller('JobController',['$scope','JobService','$location','ApplyJobServi
 					function($scope, JobService,$location,ApplyJobService ,$rootScope,$cookieStore, $http) {
 							console.log("JobController...")
 							var self = this;
-							self.job = {id:'',jobtitle : '',companyName: '',skills:'',email:'',qualification:'',status:''};
+							self.job = {id:'',jobtitle : '',companyName: '',skills:'',email:'',qualification:'',status:'',timeStamp:''};
 							//this.job =  {id:'',title : '',description: '',addDate:'',qualification:'',status:''};
 							this.jobs = []; 
-							self.appjob = {ajId:'',jobsid : '',jobname: '',userId:'',userName:'',dateofapply:'',timeofapply:''};
+							self.appjob = {ajId:'',jobsid : '',jobname: '',userId:'',userName:'',day:'',timeStamp:''};
 							this.appjobs=[];
 							// this refers to obj and here refers to obj of type controller
 							// a reference variable cannot refer to more than one obj 
@@ -69,7 +69,7 @@ app.controller('JobController',['$scope','JobService','$location','ApplyJobServi
 								console.log("createJob...")
 								JobService.createJob(job).then(function(d) {
 													alert("Thank you for creating message")
-													$location.path("/index")
+													$location.path("/viewjob")
 												},
 												function(errResponse) {
 													console.error('Error while creating Job.');

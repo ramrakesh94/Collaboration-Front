@@ -6,11 +6,11 @@ app.config(function($routeProvider) {
 	         
          
 	.when('/', {
-		templateUrl : 'index.html'  //home/home2.html
+		templateUrl : 'home/home.html'  //home/home2.html
 	})
 
 	.when('/home', {
-		templateUrl : 'index.html' //Home/Home.html
+		templateUrl : 'home/home.html' //Home/Home.html
 
 	})
 	.when('/friendreq', {

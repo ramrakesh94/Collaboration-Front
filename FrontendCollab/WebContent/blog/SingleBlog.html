@@ -49,6 +49,9 @@
                                 <div class="comments">
                                     <a href="#" title="Comment on Latin words Ipsum"> <span class="fa fa-comment"> </span>{{count}} Comments</a>
                                 </div> 
+                                <div class="timeo">
+                                  	<a href="#" title="Comment on Latin words Ipsum"> <span class="fa fa-clock-o"> </span> <span>Created On :{{viewBlog.timeStamp}} </span></a>
+                                </div>
                                 <!-- <div class="likes">
                                     <a href="#" title="Comment on Latin words Ipsum"> <span class="fa fa-thumbs-o-up"> </span>120 Likes</a>
                                 </div> -->                                
@@ -79,8 +82,9 @@
                             </div>
                             <div class="commententries"  ng-show="currentUser.role=='STUDENT'" ng-repeat="b in bct ">
                             	<h3 class="border-title"><!--  # <span>Comments</span> --></h3>
-                            	    By:<span ng-bind="b.username"></span>
+                            	    By:<span ng-bind="b.username"></span>   
                                  <div class="text">Comment:<span ng-bind="b.bcomments"></span></div>
+                                 <div class>Commented On :<span> {{b.timeStamp}}</span></div>
                                  <!-- <p>count</p> -->
                                 <ul class="commentlist">
                                 	<li>

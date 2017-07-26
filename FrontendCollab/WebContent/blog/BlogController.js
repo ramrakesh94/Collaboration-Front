@@ -7,9 +7,9 @@ app.controller('BlogController', ['$scope','BlogService','BlogCommentService','$
 			//console.log(self.blog);
 			console.log("BlogCommentControlloerrrrrrr.............")
 			var self = this; // this will refer to self to current obj
-			self.blog = {blogId : '',blogtitle : '',status : '',blogDescription : '',postedOn : '',name:'',userId:''};
+			self.blog = {blogId : '',blogtitle : '',status : '',blogDescription : '',postedOn : '',name:'',userId:'',timeStamp:''};
 			// self.blog = {id:'',title : '',status: '',description:''};
-			self.blogcomment = {id:'',blogId:'',userId:'',bcomments:'',username:'',mail:''};
+			self.blogcomment = {id:'',blogId:'',userId:'',bcomments:'',username:'',mail:'',timeStamp:''};
 			self.blogs = [];		// json array
 			self.blogcomments= [];
 			var a = 0;

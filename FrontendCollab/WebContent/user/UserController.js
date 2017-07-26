@@ -45,9 +45,9 @@ app.controller('UserController',['$scope','UserService','FriendService','$locati
 									self.us = arr;	       // store it in an array
 									console.log(self.us)	
 									
-									console.log("fetchAllRequestedFriend...")
+									console.log("fetchAllpreviouslyRequestedFriend...") // why this method -this is getting all his users we need to call accept and accept1
 									FriendService.fetchAllRequestedfriends($scope.loginUser.cusId).then(function(d) {
-										self.friends = d; // add buddy friends
+										self.friends = d; // add buddy friends mali12 didnt req hari so hari name is displayind
 										console.log(self.friends)					
 							// whats this doing
 										
@@ -135,7 +135,7 @@ app.controller('UserController',['$scope','UserService','FriendService','$locati
 							    	FriendService.deleteFriendRequest(req.id).then(function(d) {
 										self.deleteFriendRequestid = d;		    			
 										console.log(self.deleteFriendRequestid)
-							    			$location.path("/find")
+							    			$location.path("/friendreq")
 							    	}, function(errResponse){
 							                console.error('Error while deleting FriendRequest');
 							            });
